@@ -1,4 +1,4 @@
-# Project Overview
+## Project Overview
 This project focuses on integrating a real-time object detection system into a differential robot using ROS (Robot Operation System 2) and the YOLO v8 Nano architecture. The main objective is to autonomously detect and navigate towards available power outlets for charging, enhancing the robot's operational autonomy across different environments.
 
 <p align="center">
@@ -7,15 +7,17 @@ This project focuses on integrating a real-time object detection system into a d
                    Figure 1: Working project. Robot autonomously searching and pursuing available power outlet for docking.
 </p>
 
-# Features
+## Features
 - **Object Detection**: Employs YOLO v8 Nano for high-efficiency and accuracy in real-time power outlet detection.
 - **Proportional Control Algorithm**: Implements proportional controllers for navigation based on detection outputs.
 - **Simulation and Real Environment Testing**: Validates the model's effectiveness through extensive video simulations and real-environment tests.
 
-# Technologies Used
+## Technologies Used
 - **YOLO v8 Nano**: Chosen for its speed and efficiency, particularly in environments with constrained computational resources.
 - **ROS 2**: Manages robot operations and communication, facilitating real-time processing.
 - **GoPiGo & Raspberry Pi**: Provides the physical platform and computing hardware for the robot.
+
+
 
 # Detailed Workflow
 
@@ -40,7 +42,7 @@ This project focuses on integrating a real-time object detection system into a d
 </p>
 
 ## 2. Data Annotation
-The data annotation was performed in the cvat.ai website. The outlets in use by another devices were purposefully ignored, so that they would not be detected / considered as a goal.
+The data annotation of the second set of images, which contained the power outlet images from the room where the robot would operate, was performed in the cvat.ai website. The outlets in use by another devices were purposefully ignored, so that they would not be detected / considered as a goal.
 
 <p align="center">
   <img src="https://github.com/mateusctelles/Power-Outlet-Docking-Robot/blob/main/media/annotation_gif.gif?raw=true" alt="sala1" width="500"/>
