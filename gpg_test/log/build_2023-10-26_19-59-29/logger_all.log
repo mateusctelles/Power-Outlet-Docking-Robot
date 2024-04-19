@@ -1,0 +1,64 @@
+[6.303s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[6.303s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=3, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7f816e3fc730>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7f816e3fc160>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7f816e3fc160>>)
+[6.556s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[6.556s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[6.556s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[6.557s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[6.557s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[6.557s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[6.558s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/mateus/ros2_puc/src/gpg_test/gpg_test'
+[6.558s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[6.558s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[6.558s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[6.558s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[6.559s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[6.559s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[6.559s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[6.559s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[6.560s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[6.813s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[6.814s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[6.814s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[6.815s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[6.815s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[6.815s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[6.816s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[6.816s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[6.817s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[6.817s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[6.817s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[6.818s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[6.818s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[6.819s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[6.819s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[6.819s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[6.820s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[6.820s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[6.820s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[7.593s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[7.594s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[8.134s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 4 installed packages in /home/mateus/ros2_puc/install
+[8.165s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 4 installed packages in /home/mateus/ros2_ws_course/install
+[8.252s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 300 installed packages in /opt/ros/humble
+[8.256s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[12.054s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[12.061s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[12.061s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[12.061s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[12.062s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[12.062s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[12.278s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[12.278s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[12.278s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[12.324s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[12.404s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[12.404s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/mateus/ros2_puc/src/gpg_test/gpg_test/install/local_setup.ps1'
+[12.420s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/mateus/ros2_puc/src/gpg_test/gpg_test/install/_local_setup_util_ps1.py'
+[12.438s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/mateus/ros2_puc/src/gpg_test/gpg_test/install/setup.ps1'
+[12.441s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/mateus/ros2_puc/src/gpg_test/gpg_test/install/local_setup.sh'
+[12.443s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/mateus/ros2_puc/src/gpg_test/gpg_test/install/_local_setup_util_sh.py'
+[12.444s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/mateus/ros2_puc/src/gpg_test/gpg_test/install/setup.sh'
+[12.447s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/mateus/ros2_puc/src/gpg_test/gpg_test/install/local_setup.bash'
+[12.462s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/mateus/ros2_puc/src/gpg_test/gpg_test/install/setup.bash'
+[12.465s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/mateus/ros2_puc/src/gpg_test/gpg_test/install/local_setup.zsh'
+[12.472s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/mateus/ros2_puc/src/gpg_test/gpg_test/install/setup.zsh'
