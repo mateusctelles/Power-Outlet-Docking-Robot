@@ -6,7 +6,7 @@ This project focuses on integrating a real-time object detection system into a d
 <p align="center">
 <img src="https://github.com/mateusctelles/Power-Outlet-Docking-Robot/blob/main/media/OutletSeekr_480.gif?raw=true" alt="final_gif" width="900"/>
 
-           Figure 1: Working project. Subpar performance due to absence of natural light.
+                   Figure 1: Working project. Robot autonomously searching and pursuing available power outlet for docking.
 </p>
 
 ## Features
