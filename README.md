@@ -3,6 +3,8 @@
 ## Project Overview
 This project focuses on integrating a real-time object detection system into a differential robot using the YOLO v8 Nano architecture. The main objective is to autonomously detect and navigate towards power outlets for charging, enhancing the robot's operational autonomy across different environments.
 
+![Outlet Seeker](https://github.com/mateusctelles/Power-Outlet-Docking-Robot/blob/main/media/OutletSeekrGif.gif)
+
 ## Features
 - **Object Detection**: Employs YOLO v8 Nano for high-efficiency and accuracy in real-time power outlet detection.
 - **Proportional Control Algorithm**: Implements proportional controllers for navigation based on detection outputs.
