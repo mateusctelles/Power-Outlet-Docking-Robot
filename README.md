@@ -1,5 +1,3 @@
-# Real Time Power Outlet Detection Applied to Differential Robot with ROS 2 and Yolo V8
-
 ## Project Overview
 This project focuses on integrating a real-time object detection system into a differential robot using ROS (Robot Operation System 2) and the YOLO v8 Nano architecture. The main objective is to autonomously detect and navigate towards available power outlets for charging, enhancing the robot's operational autonomy across different environments.
 
@@ -23,6 +21,14 @@ This project focuses on integrating a real-time object detection system into a d
 
 ### Data Collection
 - **Phase 1**: Used a pre-annotated dataset for initial model training on general power outlet recognition.
+
+<p align="center">
+  <img src="https://github.com/mateusctelles/Power-Outlet-Docking-Robot/blob/main/media/rflow1.png?raw=true" alt="rflow1" width="500"/>
+  <img src="https://github.com/mateusctelles/Power-Outlet-Docking-Robot/blob/main/media/rflow11.jpg?raw=true" alt="final_gif" width="300"/>
+ 
+                   Figure 2 and 3: Pre annotated images of general power outlets obtained from Roboflow website
+</p>
+
 - **Phase 2**: Custom images captured from the test environment were used to refine and tune the model to specific conditions and challenges found in the actual deployment environment.
 
 ### Model Training
