@@ -19,25 +19,6 @@ This project focuses on integrating a real-time object detection system into a d
 - **ROS 2**: Manages robot operations and communication, facilitating real-time processing.
 - **GoPiGo & Raspberry Pi**: Provides the physical platform and computing hardware for the robot.
 
-## Setup and Installation
-1. **Clone the Repository**
-   ```bash
-   git clone <repository-url>
-2. **Install ROS 2**
-   - Install ROS 2 on your Raspberry Pi. Follow the official ROS 2 documentation to ensure it is configured properly to interact with GoPiGo.
-   - Ensure all dependencies and ROS 2 packages needed for the project are installed.
-
-3. **Assemble the GoPiGo Robot**
-   - Attach the camera module to the GoPiGo robot. Ensure it is securely mounted and positioned to capture the environment at the robot’s operating height.
-   - Connect the Raspberry Pi to the GoPiGo robot and verify all hardware connections are correct.
-
-## Usage
-To run the detection and navigation system:
-```bash
-python3 robot_control.py
-```
-This script activates the robot's camera and starts a continuous loop for real-time detection of power outlets. Detected outlets trigger navigational commands to approach and dock for recharging.
-
 ## Detailed Workflow
 
 ### Data Collection
@@ -62,6 +43,25 @@ The model displayed high accuracy in well-lit conditions and adequate performanc
 - **Dataset Expansion**: To include more diverse environmental scenarios.
 - **Control System Upgrade**: Introducing integral and derivative controls to the existing proportional control setup.
 - **Adaptability Tests**: Expanding the application to different robot types and operational contexts.
+
+## Setup and Installation
+1. **Clone the Repository**
+   ```bash
+   git clone <repository-url>
+2. **Install ROS 2**
+   - Install ROS 2 on your Raspberry Pi. Follow the official ROS 2 documentation to ensure it is configured properly to interact with GoPiGo.
+   - Ensure all dependencies and ROS 2 packages needed for the project are installed.
+
+3. **Assemble the GoPiGo Robot**
+   - Attach the camera module to the GoPiGo robot. Ensure it is securely mounted and positioned to capture the environment at the robot’s operating height.
+   - Connect the Raspberry Pi to the GoPiGo robot and verify all hardware connections are correct.
+
+## Usage
+To run the detection and navigation system:
+```bash
+python3 robot_control.py
+```
+This script activates the robot's camera and starts a continuous loop for real-time detection of power outlets. Detected outlets trigger navigational commands to approach and dock for recharging.
 
 ## Contributing
 Contributors are welcome! Please fork this repository, make your changes, and submit a pull request with your improvements.
