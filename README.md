@@ -19,7 +19,7 @@ This project focuses on integrating a real-time object detection system into a d
 
 ## Detailed Workflow
 
-### Data Collection
+### 1. Data Collection
 - **Phase 1**: Used a pre-annotated dataset for initial model training on general power outlet recognition.
 
 <p align="center">
@@ -39,16 +39,26 @@ This project focuses on integrating a real-time object detection system into a d
     
 </p>
 
-### Model Training
+### 2. Data Annotation
+The data annotation was performed in the cvat.ai website. The outlets in use by another devices were purposefully ignored, so that they would not be detected / considered as a goal.
+
+<p align="center">
+  <img src="https://github.com/mateusctelles/Power-Outlet-Docking-Robot/blob/main/media/annotation_gif.gif?raw=true" alt="sala1" width="500"/>
+  
+            Figure: Sequence of annotated images in cvat.ai website. Here it can be seen how the annotation was manually made.
+</p>
+
+
+### 3. Model Training
 The training process included two main stages:
 - **Stage 1**: General feature learning using the broader dataset.
 - **Stage 2**: Fine-tuning with a custom dataset specific to the deployment environment to enhance accuracy and reliability.
 
-### Model Performance Testing
+### 4. Model Performance Testing
 - **Video Simulations**: Conducted to test detection capabilities under various simulated conditions to ensure robustness.
 - **Real Environment Testing**: Implemented in a controlled room setup mimicking potential operational scenarios to validate real-world effectiveness.
 
-## Results and Improvements
+## 5. Results and Improvements
 The model displayed high accuracy in well-lit conditions and adequate performance under artificial lighting. Future improvements will focus on:
 - **Enhancing the dataset**: Adding images under varied lighting conditions.
 - **Refining the control system**: Implementing a PID control system to improve navigational smoothness and response accuracy.
