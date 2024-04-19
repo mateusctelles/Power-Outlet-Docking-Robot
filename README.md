@@ -26,10 +26,18 @@ This project focuses on integrating a real-time object detection system into a d
   <img src="https://github.com/mateusctelles/Power-Outlet-Docking-Robot/blob/main/media/rflow1.png?raw=true" alt="rflow1" width="500"/>
   <img src="https://github.com/mateusctelles/Power-Outlet-Docking-Robot/blob/main/media/rflow11.jpg?raw=true" alt="final_gif" width="300"/>
  
-                   Figure 2 and 3: Pre annotated images of general power outlets obtained from Roboflow website
+                
 </p>
 
 - **Phase 2**: Custom images captured from the test environment were used to refine and tune the model to specific conditions and challenges found in the actual deployment environment.
+<p align="center">
+  <img src="https://github.com/mateusctelles/Power-Outlet-Docking-Robot/blob/main/media/sala1.png?raw=true" alt="sala1" width="200"/>
+  <img src="https://github.com/mateusctelles/Power-Outlet-Docking-Robot/blob/main/media/sala12.png?raw=true" alt="sala12" width="200"/>
+  <img src="https://github.com/mateusctelles/Power-Outlet-Docking-Robot/blob/main/media/sala13.png?raw=true" alt="sala13" width="200"/>
+  <img src="https://github.com/mateusctelles/Power-Outlet-Docking-Robot/blob/main/media/sala14.png?raw=true" alt="sala14" width="200"/>
+ 
+    
+</p>
 
 ### Model Training
 The training process included two main stages:
