@@ -70,12 +70,24 @@ The model's training involved two main stages, each tailored to leverage the dat
 - **Batch Size**: 16, to balance between memory constraints and efficient gradient estimation.
 - **Patience Parameter**: Set at 50, to prevent overfitting and stop training if the model doesn’t improve on the validation set.
 
+<p align="center">
+  <img src="https://github.com/mateusctelles/Power-Outlet-Docking-Robot/blob/main/media/Training12.png?raw=true" alt="training1" width="430"/>
+  <img src="https://github.com/mateusctelles/Power-Outlet-Docking-Robot/blob/main/media/Training13.png?raw=true" alt="training1" width="330"/>
+  <img src="https://github.com/mateusctelles/Power-Outlet-Docking-Robot/blob/main/media/Training1.png?raw=true" alt="training1" width="650"/>
+</p>
+
 #### Second Stage of Training
 - **Dataset**: The 312 newly captured and annotated images were used, focusing specifically on the test room environment.
 - **Split**: Due to the smaller dataset size, a 90% training and 10% test split was used.
 - **Epochs**: Reduced to 34, considering the specific adaptation required and the smaller dataset.
 - **Batch Size**: Slightly decreased to 15, to adjust for the dataset's characteristics.
 - **Patience Parameter**: Maintained at 50, for consistency in handling potential overfitting.
+
+<p align="center">
+  <img src="https://github.com/mateusctelles/Power-Outlet-Docking-Robot/blob/main/media/Trainin21.png?raw=true" alt="training22" width="550"/>
+  <img src="https://github.com/mateusctelles/Power-Outlet-Docking-Robot/blob/main/media/Training23.png?raw=true" alt="training23" width="330"/>
+  <img src="https://github.com/mateusctelles/Power-Outlet-Docking-Robot/blob/main/media/Training2.png?raw=true" alt="training2" width="650"/>
+</p>
 
 ### Evaluation and Adjustments
 - **Performance Monitoring**: Throughout the training process, the model’s performance was regularly evaluated using the validation set, allowing for adjustments in parameters if necessary.
