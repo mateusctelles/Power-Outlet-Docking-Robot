@@ -99,9 +99,11 @@ This structured approach to training ensures that the YOLO v8 Nano model is robu
 ## 4. Model Performance Testing
 - **Video Simulation**: Conducted by running the trained model on a video recorded hovering the iPhone camera at the robot's camera height through the operating environment as if it was the actual robot.
 <p align="center">
-  <img src="https://github.com/mateusctelles/Power-Outlet-Docking-Robot/blob/main/media/Simulation.gif?raw=true" alt="sim" width="550"/>
+  <img src="https://github.com/mateusctelles/Power-Outlet-Docking-Robot/blob/main/media/Simulation.gif?raw=true" alt="sim" width="650"/>
 </p>
 
+- The results from testing in the video proved the model to be working very well, being potentially ready to be implemented in the robot, where the data from the bounding boxes would be processed to feed the control system.
+  
 ## 5. Processing YoloV8 results to perform Control Actions
 
 The effective navigation of the differential robot towards power outlets heavily relies on the accurate interpretation of visual data captured by its camera. This section elaborates on the bounding box centroid and area calculation,  and their relationship to the center of the camera’s field of view, which are critical for the control system's functionality.
@@ -150,7 +152,7 @@ The control system of the differential robot uses data from the vision system to
   - **Distance Estimation**: Utilizes the area of the bounding box as an inverse measure of distance. A larger bounding box indicates closer proximity.
   - **Control Strategy**: The forward speed of the robot is adjusted to be inversely proportional to the distance, modified by the square of the angular error to refine the approach based on alignment accuracy. The relationship is given by:
     - `Forward Speed = K_lin × (1 / Distance) / (α × Angular Error)^2`
-    - Here, α is a scaling factor to adjust the influence of angular error on speed.
+    - Here, α is a scaling factor to adjust the influence of angular error on speed. This is meant to incentivize the robot to move really slow if the direction it is pointing is not towards the power outlet. So once it aligns, it goes faster toward the goal.
   - **Linear Gain (`K_lin`)**: Influences the deceleration rate, enhancing control precision during the final approach. Speed is capped to prevent overshooting and ensure safe docking.
 
 ### Safe Stopping Mechanism
@@ -174,10 +176,16 @@ This control system design leverages bounding box data effectively to guide the 
 
 
 
-## 5. Results and Improvements
-The model displayed high accuracy in well-lit conditions and adequate performance under artificial lighting. Future improvements will focus on:
-- **Enhancing the dataset**: Adding images under varied lighting conditions.
-- **Refining the control system**: Implementing a PID control system to improve navigational smoothness and response accuracy.
+## 7. Results and Improvements
+The model displayed high accuracy in well-lit conditions and adequate performance under artificial lighting. 
+
+- **First video (Left):** Robot working during the natural daylight, which is the condition that the training data was obtained. The YoloV8 model showed superior performance, which allowed a faster and smoother control of the robot.
+- **Second video (Right):** Robot working during the night, using artificial lamp light. There was no training data with the power outlets captured under this kind of lightning. It resulted in a less smooth and slower control of the robot. 
+
+<p align="center">
+  <img src="https://github.com/mateusctelles/Power-Outlet-Docking-Robot/blob/main/media/daylight_evalGif.gif?raw=true" alt="goodlight" width="220"/>
+  <img src="https://github.com/mateusctelles/Power-Outlet-Docking-Robot/blob/main/media/OutletSeekr_480.gif?raw=true" alt="badlight" width="550"/>
+</p>
 
 ## Future Work
 - **Dataset Expansion**: To include more diverse environmental scenarios.
@@ -187,7 +195,7 @@ The model displayed high accuracy in well-lit conditions and adequate performanc
 ## Setup and Installation
 1. **Clone the Repository**
    ```bash
-   git clone <repository-url>
+   git clone <https://github.com/mateusctelles/Power-Outlet-Docking-Robot.git>
 2. **Install ROS 2**
    - Install ROS 2 on your Raspberry Pi. Follow the official ROS 2 documentation to ensure it is configured properly to interact with GoPiGo.
    - Ensure all dependencies and ROS 2 packages needed for the project are installed.
