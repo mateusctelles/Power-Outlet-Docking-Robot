@@ -17,9 +17,11 @@ This project focuses on integrating a real-time object detection system into a d
 - **ROS 2**: Manages robot operations and communication, facilitating real-time processing.
 - **GoPiGo & Raspberry Pi**: Provides the physical platform and computing hardware for the robot.
 
-## Detailed Workflow
 
-### Data Collection
+
+# Detailed Workflow
+
+## 1. Data Collection
 - **Phase 1**: Used a pre-annotated dataset for initial model training on general power outlet recognition.
 
 <p align="center">
@@ -39,16 +41,66 @@ This project focuses on integrating a real-time object detection system into a d
     
 </p>
 
-### Model Training
-The training process included two main stages:
-- **Stage 1**: General feature learning using the broader dataset.
-- **Stage 2**: Fine-tuning with a custom dataset specific to the deployment environment to enhance accuracy and reliability.
+## 2. Data Annotation
+The data annotation of the second set of images, which contained the power outlet images from the room where the robot would operate, was performed in the cvat.ai website. The outlets in use by another devices were purposefully ignored, so that they would not be detected / considered as a goal.
 
-### Model Performance Testing
+<p align="center">
+  <img src="https://github.com/mateusctelles/Power-Outlet-Docking-Robot/blob/main/media/annotation_gif.gif?raw=true" alt="sala1" width="500"/>
+  
+            Figure: Sequence of annotated images in cvat.ai website. Here it can be seen how the annotation was manually made.
+</p>
+
+
+## 3. Model Training
+
+### Model Architecture
+The model architecture selected for this project was YOLO v8 Nano, which is a variant of the standard YOLO v8 optimized for environments where computational resources are limited. Here’s more on the architecture:
+
+- **YOLO v8 Nano**: Designed for speed and efficiency, it uses deep convolutional neural networks (CNNs) but with a simplified structure that maintains performance while being resource-efficient.
+- **Features**: YOLO v8 architectures are known for their ability to perform object detection in real-time by analyzing the entire image in one pass, predicting both bounding boxes and class probabilities simultaneously. This is crucial for applications like autonomous robotic navigation where quick processing is essential.
+
+
+### Training Parameters and Execution
+The model's training involved two main stages, each tailored to leverage the datasets prepared in the earlier phases:
+
+#### First Stage of Training
+- **Dataset**: Used the 1003 annotated images from RoboFlow.
+- **Split**: Data was divided into 80% for training and 20% for testing.
+- **Epochs**: 150 epochs were set to allow sufficient learning without overfitting.
+- **Batch Size**: 16, to balance between memory constraints and efficient gradient estimation.
+- **Patience Parameter**: Set at 50, to prevent overfitting and stop training if the model doesn’t improve on the validation set.
+
+<p align="center">
+  <img src="https://github.com/mateusctelles/Power-Outlet-Docking-Robot/blob/main/media/Training12.png?raw=true" alt="training1" width="430"/>
+  <img src="https://github.com/mateusctelles/Power-Outlet-Docking-Robot/blob/main/media/Training13.png?raw=true" alt="training1" width="330"/>
+  <img src="https://github.com/mateusctelles/Power-Outlet-Docking-Robot/blob/main/media/Training1.png?raw=true" alt="training1" width="650"/>
+</p>
+
+#### Second Stage of Training
+- **Dataset**: The 312 newly captured and annotated images were used, focusing specifically on the test room environment.
+- **Split**: Due to the smaller dataset size, a 90% training and 10% test split was used.
+- **Epochs**: Reduced to 34, considering the specific adaptation required and the smaller dataset.
+- **Batch Size**: Slightly decreased to 15, to adjust for the dataset's characteristics.
+- **Patience Parameter**: Maintained at 50, for consistency in handling potential overfitting.
+
+<p align="center">
+  <img src="https://github.com/mateusctelles/Power-Outlet-Docking-Robot/blob/main/media/Trainin21.png?raw=true" alt="training22" width="550"/>
+  <img src="https://github.com/mateusctelles/Power-Outlet-Docking-Robot/blob/main/media/Training23.png?raw=true" alt="training23" width="330"/>
+  <img src="https://github.com/mateusctelles/Power-Outlet-Docking-Robot/blob/main/media/Training2.png?raw=true" alt="training2" width="650"/>
+</p>
+
+### Evaluation and Adjustments
+- **Performance Monitoring**: Throughout the training process, the model’s performance was regularly evaluated using the validation set, allowing for adjustments in parameters if necessary.
+- **Fine-Tuning**: The two-stage training approach ensured that the model was not only familiar with general features of power outlets but also finely adjusted to recognize the specific outlets it would encounter in its operational environment.
+
+This structured approach to training ensures that the YOLO v8 Nano model is robust, efficient, and highly functional for the specific task of detecting power outlets in real-time, which is critical for the autonomous operations of the differential robot.
+
+
+## 4. Model Performance Testing
 - **Video Simulations**: Conducted to test detection capabilities under various simulated conditions to ensure robustness.
 - **Real Environment Testing**: Implemented in a controlled room setup mimicking potential operational scenarios to validate real-world effectiveness.
 
-## Results and Improvements
+## 5. Results and Improvements
 The model displayed high accuracy in well-lit conditions and adequate performance under artificial lighting. Future improvements will focus on:
 - **Enhancing the dataset**: Adding images under varied lighting conditions.
 - **Refining the control system**: Implementing a PID control system to improve navigational smoothness and response accuracy.
