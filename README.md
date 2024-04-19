@@ -97,8 +97,82 @@ This structured approach to training ensures that the YOLO v8 Nano model is robu
 
 
 ## 4. Model Performance Testing
-- **Video Simulations**: Conducted to test detection capabilities under various simulated conditions to ensure robustness.
-- **Real Environment Testing**: Implemented in a controlled room setup mimicking potential operational scenarios to validate real-world effectiveness.
+- **Video Simulation**: Conducted by running the trained model on a video recorded hovering the iPhone camera at the robot's camera height through the operating environment as if it was the actual robot.
+<p align="center">
+  <img src="https://github.com/mateusctelles/Power-Outlet-Docking-Robot/blob/main/media/Simulation.gif?raw=true" alt="sim" width="550"/>
+</p>
+
+## 5. Processing YoloV8 results to perform Control Actions
+
+The effective navigation of the differential robot towards power outlets heavily relies on the accurate interpretation of visual data captured by its camera. This section elaborates on the bounding box centroid and area calculation,  and their relationship to the center of the camera’s field of view, which are critical for the control system's functionality.
+
+### Bounding Box Centroid Calculation
+- **Purpose**: The centroid of a bounding box represents the central point of the detected object (in this case, a power outlet). It is critical for determining the object's position relative to the robot.
+- **Calculation**: The centroid (`Cx, Cy`) is calculated as the average of the bounding box's corners:
+  - `Cx = (x_min + x_max) / 2`
+  - `Cy = (y_min + y_max) / 2`
+- **Usage**: The centroid's coordinates are used to compute the yaw control, specifically adjusting the robot's heading to align with the power outlet.
+
+### Area Calculation of the Bounding Box
+- **Purpose**: The area of the bounding box is used as a proxy for the distance between the robot and the power outlet. Larger areas suggest the outlet is closer, while smaller areas indicate it is farther away.
+- **Calculation**: The area is calculated by multiplying the width and height of the bounding box:
+  - `Area = (x_max - x_min) * (y_max - y_min)`
+- **Usage**: This measure helps determine the robot’s speed—the closer the object, the slower the robot moves to allow for precise maneuvers.
+
+### Relationship with the Center of the Camera’s Field of View
+- **Importance**: Aligning the centroid of the bounding box with the center of the camera's field of view is crucial for direct navigation towards the power outlet.
+- **Center of the Camera**: Defined typically as the middle point of the image frame dimensions:
+  - `Center_x = Frame Width / 2`
+  - `Center_y = Frame Height / 2`
+- **Control Adjustments**: The robot uses the relative position of the centroid to the center of the camera to adjust its yaw (rotational movement) and linear speed (forward movement). If the centroid is off-center, the robot adjusts its path to center the outlet in its view before advancing.
+
+### Control System Integration
+Using these calculations, the robot's control system dynamically adjusts its orientation and speed based on real-time input from its vision system. This ensures accurate and efficient navigation towards the target, essential for autonomous docking and recharging operations.
+
+The integration of these visual computations into the robot’s navigational controls allows for a sophisticated and responsive system capable of operating autonomously in complex environments.
+
+
+## 6. Control System Implementation
+
+The control system of the differential robot uses data from the vision system to navigate towards detected power outlets efficiently. This section explains how the yaw and distance control strategies are informed by bounding box calculations from the vision system, with a focus on the mathematical foundations.
+
+### Yaw Control (Orientation Adjustment)
+- **Objective**: To ensure the robot is precisely aligned with the power outlet, optimizing its orientation for effective docking.
+- **Implementation Details**:
+  - **Angular Error**: Defined as the difference between the centroid's angle relative to the camera's central axis.
+  - **Control Strategy**: The robot adjusts its yaw by applying a correction that is proportional to the negative of the angular error. This is mathematically expressed as:
+    - `Angular Velocity = -K_ang × Angular Error`
+  - **Angular Gain (`K_ang`)**: A predefined constant that modulates how responsive the robot is to angular discrepancies, facilitating smooth and accurate adjustments.
+
+### Distance Control (Speed Adjustment)
+- **Objective**: To manage the robot's approach speed based on its estimated distance from the power outlet, which is inferred from the area of the bounding box.
+- **Implementation Details**:
+  - **Distance Estimation**: Utilizes the area of the bounding box as an inverse measure of distance. A larger bounding box indicates closer proximity.
+  - **Control Strategy**: The forward speed of the robot is adjusted to be inversely proportional to the distance, modified by the square of the angular error to refine the approach based on alignment accuracy. The relationship is given by:
+    - `Forward Speed = K_lin × (1 / Distance) / (α × Angular Error)^2`
+    - Here, α is a scaling factor to adjust the influence of angular error on speed.
+  - **Linear Gain (`K_lin`)**: Influences the deceleration rate, enhancing control precision during the final approach. Speed is capped to prevent overshooting and ensure safe docking.
+
+### Safe Stopping Mechanism
+- **Objective**: Ensure the robot stops at a safe distance from the power outlet without losing visibility.
+- **Implementation Details**:
+  - **Stop Condition**: The robot monitors the area of the bounding box to determine its proximity to the outlet. When the area reaches or exceeds a predefined threshold, this indicates that the robot is sufficiently close to the outlet.
+  - **Tolerance Parameter**: A specific area value (`tol`) is set as the threshold to stop the robot. This parameter ensures that the robot maintains a safe distance where the outlet remains within the camera's field of view, preventing overshooting or misalignment during docking.
+  - **Control Adjustment**: Upon reaching the tolerance area, the robot reduces its forward speed to zero and ceases angular adjustments, effectively halting its movement while keeping the outlet in view.
+
+### Integration and Real-Time Adjustments
+- **Dynamic Adjustments**: Both yaw and distance controls are dynamically updated based on real-time visual inputs, allowing the robot to adjust its path and speed instantaneously.
+- **Safety and Robustness**: Includes mechanisms for capping the maximum speed and robust error handling to ensure reliable operation under various environmental conditions.
+- **Feedback Mechanism**: Continuous feedback from the vision system ensures that the robot can correct its orientation and speed based on the latest data, maintaining precise navigation towards the target.
+
+### Summary of Control System Features
+- **Responsive**: Adapts in real-time to changes in the detected outlet's position and orientation.
+- **Precise**: Maintains exact alignment with the outlet for effective docking, using finely tuned control parameters.
+- **Safe**: Implements safety measures such as velocity limits and comprehensive error management.
+
+This control system design leverages bounding box data effectively to guide the differential robot towards power outlets, balancing precision, adaptability, and safety in its autonomous docking procedures.
+
+
 
 ## 5. Results and Improvements
 The model displayed high accuracy in well-lit conditions and adequate performance under artificial lighting. Future improvements will focus on:
